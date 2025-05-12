@@ -1,108 +1,61 @@
 body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    color: white;
-    overflow-x: hidden;
-    position: relative;
-    background: black;
-}
-
-.background {
-    position: fixed;
-    width: 100%;
-    height: 100vh;
-    background: linear-gradient(-45deg, #ff8800, #9139db, #5a4fcf, #ff8800);
-    background-size: 600% 600%;
-    animation: waveBackground 16s ease-in-out infinite;
-    z-index: -2;
-    filter: brightness(1.1);
-}
-
-@keyframes waveBackground {
-    0% {
-        background-position: 0% 50%;
-    }
-    25% {
-        background-position: 50% 75%;
-    }
-    50% {
-        background-position: 100% 50%;
-    }
-    75% {
-        background-position: 50% 25%;
-    }
-    100% {
-        background-position: 0% 50%;
-    }
-}
-
-.highlight {
-    position: fixed;
-    width: 200px;
-    height: 200px;
-    background: radial-gradient(circle, rgba(255, 136, 0, 0.3) 0%, rgba(255, 136, 0, 0) 80%);
-    border-radius: 50%;
-    pointer-events: none;
-    transform: translate(-50%, -50%);
-    transition: opacity 0.8s ease-out;
-    opacity: 0;
-    z-index: -1;
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background: #f0f0f0;
 }
 
 header {
-    text-align: center;
-    padding: 20px;
+  background-color: #333;
+  color: white;
+  padding: 10px;
+  text-align: center;
 }
 
-input {
-    padding: 10px;
-    width: 50%;
-    border-radius: 5px;
-    border: none;
-    font-size: 16px;
-    outline: none;
-    background: #222;
-    color: white;
+header input {
+  margin-top: 10px;
+  padding: 8px;
+  width: 60%;
 }
 
-.script-list {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 20px;
-    padding: 20px;
+header button {
+  padding: 8px;
+  margin-left: 10px;
 }
 
-.script-item {
-    background: #333;
-    padding: 15px;
-    border-radius: 10px;
-    width: 80%;
-    max-width: 600px;
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+.product-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 10px;
 }
 
-pre {
-    background: #222;
-    padding: 10px;
-    border-radius: 5px;
-    overflow-x: auto;
-    white-space: pre-wrap;
-    word-wrap: break-word;
+.product {
+  background: white;
+  margin: 10px;
+  padding: 10px;
+  width: 200px;
+  border-radius: 10px;
+  box-shadow: 0 0 5px gray;
+  text-align: center;
 }
 
-.copy-btn {
-    background: #ff8800;
-    border: none;
-    color: white;
-    padding: 10px 15px;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 14px;
-    margin-top: 10px;
-    transition: 0.3s;
+.product img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
 }
 
-.copy-btn:hover {
-    background: #aa50e0;
+.cart {
+  background: white;
+  margin: 20px;
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0 0 5px gray;
+}
+
+.cart textarea {
+  width: 100%;
+  height: 60px;
+  margin: 5px 0;
 }
