@@ -95,18 +95,23 @@
             return btoa(unescape(encodeURIComponent(note))).slice(0, 30);
         }
 
+        function encodeNote(note) {
+            return btoa(unescape(encodeURIComponent(note))).slice(0, 30);
+        }
+
         function checkout() {
             if (cart.length === 0) return alert('Giỏ hàng trống');
 
             const address = document.getElementById('address').value.trim();
-            if (!address) return alert('Vui lòng nhập địa chỉ giao hàng, nếu không rõ địa chỉ sẽ bị mất đơn.');
+            if (!address) return alert('Vui lòng nhập địa chỉ giao hàng.');
 
             const note = document.getElementById('note').value.trim();
-            const fullNote = `Địa chỉ: ${address} | Ghi chú: ${note}`;
-            const encodedNote = encodeNote(fullNote);
+
+            const encodedAddress = encodeURIComponent(address); // Mã hóa ASCII
+            const encodedNote = encodeNote(note); // Mã hóa base64
 
             const productLinks = cart.map(p => p.id).join('/');
-            const link = `https://shop.happy37135535.workers.dev/${productLinks}/${encodedNote}`;
+            const link = `https://shop.happy37135535.workers.dev/${productLinks}/${encodedAddress}/${encodedNote}`;
             window.open(link, '_blank');
         }
 
