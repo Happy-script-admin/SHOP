@@ -1,22 +1,15 @@
 /* Toàn bộ trang */
-*,
-*::before,
-*::after {
-  box-sizing: border-box; /* Đảm bảo tính toán kích thước chính xác */
-}
-
 body {
   font-family: 'Segoe UI', sans-serif;
   margin: 0;
   padding: 0;
-  background-color: #f2eee9; /* Nền kem */
+  background-color: #f2eee9;
   color: #333;
-  overflow-x: hidden; /* Ngăn chặn cuộn ngang */
 }
 
 /* Header */
 header {
-  background-color: #4e342e; /* Màu nâu gỗ đậm */
+  background-color: #4e342e;
   color: white;
   padding: 20px;
   text-align: center;
@@ -34,9 +27,8 @@ header h1 {
 header input {
   margin-top: 10px;
   padding: 10px;
-  width: 60%;  /* Điều chỉnh lại cho co giãn tốt hơn */
-  max-width: 400px; /* Đặt giới hạn chiều rộng */
-  min-width: 200px; /* Đảm bảo không quá nhỏ */
+  width: 90%;
+  max-width: 400px;
   border: none;
   border-radius: 5px;
   font-size: 14px;
@@ -45,7 +37,7 @@ header input {
 header button {
   padding: 10px 15px;
   margin-left: 10px;
-  background-color: #8d6e63; /* Nâu nhạt */
+  background-color: #8d6e63;
   color: white;
   border: none;
   border-radius: 5px;
@@ -53,7 +45,7 @@ header button {
 }
 
 header button:hover {
-  background-color: #795548; /* Nâu đậm hơn */
+  background-color: #795548;
 }
 
 /* Danh sách sản phẩm */
@@ -61,8 +53,8 @@ header button:hover {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  gap: 20px;
   padding: 20px;
-  gap: 20px; /* Thêm khoảng cách giữa các sản phẩm */
 }
 
 /* Thẻ sản phẩm */
@@ -71,12 +63,14 @@ header button:hover {
   border: 1px solid #ddd;
   padding: 15px;
   border-radius: 10px;
-  width: 100%;
-  max-width: 250px;  /* Đặt giới hạn chiều rộng cho sản phẩm */
-  min-width: 200px;  /* Đảm bảo sản phẩm không bị quá nhỏ */
+  flex: 1 1 220px;
+  max-width: 250px;
   text-align: center;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
   transition: transform 0.2s, box-shadow 0.3s;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .product:hover {
@@ -89,22 +83,25 @@ header button:hover {
   height: 140px;
   object-fit: cover;
   border-radius: 5px;
+  margin-bottom: 10px;
 }
 
 .product h3 {
   margin: 10px 0 5px;
-  color: #5d4037; /* Nâu */
+  color: #5d4037;
+  font-size: 16px;
 }
 
 .product p {
   margin: 5px 0;
   font-weight: bold;
+  font-size: 14px;
 }
 
 .product button {
   margin-top: 10px;
   padding: 8px 12px;
-  background-color: #6d4c41; /* Nâu đậm */
+  background-color: #6d4c41;
   color: white;
   border: none;
   border-radius: 5px;
@@ -128,6 +125,7 @@ header button:hover {
 
 .cart h2 {
   color: #4e342e;
+  margin-bottom: 15px;
 }
 
 .cart ul {
@@ -143,6 +141,7 @@ header button:hover {
   padding: 8px;
   border: 1px solid #ccc;
   font-size: 14px;
+  resize: vertical;
 }
 
 .cart button {
@@ -159,22 +158,19 @@ header button:hover {
   background-color: #795548;
 }
 
-/* Responsive cho điện thoại */
-@media screen and (max-width: 600px) {
+/* Responsive cho mobile */
+@media (max-width: 600px) {
   header input {
-    width: 80%;  /* Mở rộng để phù hợp với kích thước màn hình nhỏ */
+    width: 100%;
+    margin-top: 10px;
   }
 
   .product {
-    width: 100%;
     max-width: 100%;
+    flex: 1 1 100%;
   }
 
   .product img {
-    height: 120px;  /* Giảm kích thước ảnh để tiết kiệm không gian */
-  }
-
-  .cart {
-    width: 95%;  /* Đảm bảo giỏ hàng có đủ không gian trên màn hình nhỏ */
+    height: 120px;
   }
 }
