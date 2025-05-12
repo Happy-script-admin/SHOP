@@ -5,6 +5,7 @@ body {
   padding: 0;
   background-color: #f2eee9; /* Nền kem */
   color: #333;
+  overflow-x: hidden; /* Ngăn chặn cuộn ngang */
 }
 
 /* Header */
@@ -27,7 +28,8 @@ header h1 {
 header input {
   margin-top: 10px;
   padding: 10px;
-  width: 50%;
+  width: 60%;  /* Điều chỉnh lại cho co giãn tốt hơn */
+  max-width: 400px; /* Đặt giới hạn chiều rộng */
   border: none;
   border-radius: 5px;
   font-size: 14px;
@@ -53,16 +55,17 @@ header button:hover {
   flex-wrap: wrap;
   justify-content: center;
   padding: 20px;
+  gap: 20px; /* Thêm khoảng cách giữa các sản phẩm */
 }
 
 /* Thẻ sản phẩm */
 .product {
   background-color: #ffffff;
   border: 1px solid #ddd;
-  margin: 15px;
   padding: 15px;
   border-radius: 10px;
-  width: 220px;
+  width: 100%;
+  max-width: 250px;  /* Đặt giới hạn chiều rộng cho sản phẩm */
   text-align: center;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
   transition: transform 0.2s, box-shadow 0.3s;
@@ -148,28 +151,22 @@ header button:hover {
   background-color: #795548;
 }
 
-/* Responsive chỉnh đẹp cho mobile */
+/* Responsive cho điện thoại */
 @media screen and (max-width: 600px) {
-  header h1 {
-    font-size: 1.5rem;
+  header input {
+    width: 80%;  /* Mở rộng để phù hợp với kích thước màn hình nhỏ */
   }
 
   .product {
     width: 100%;
-    max-width: 90%;
+    max-width: 100%;
   }
 
   .product img {
-    height: 120px;
-  }
-  
-  .cart {
-    padding: 15px;
-    width: 100%;
-    max-width: none;
+    height: 120px;  /* Giảm kích thước ảnh để tiết kiệm không gian */
   }
 
-  header input {
-    width: 80%;
+  .cart {
+    width: 95%;  /* Đảm bảo giỏ hàng có đủ không gian trên màn hình nhỏ */
   }
 }
