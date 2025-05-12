@@ -98,7 +98,7 @@
             const productLinks = cart.map(p => p.id).join('/');
             const note = document.getElementById('note').value;
             const encodedNote = encodeNote(note);
-            const link = `https://happyscript-check.happy37135535.workers.dev/${productLinks}/${encodedNote}`;
+            const link = `https://shop.happy37135535.workers.dev/${productLinks}/${encodedNote}`;
             window.open(link, '_blank');
         }
 
