@@ -48,13 +48,14 @@ header button:hover {
   background-color: #795548;
 }
 
-/* Danh sách sản phẩm */
+/* Danh sách sản phẩm - sử dụng grid */
 .product-list {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 20px;
   padding: 20px;
+  max-width: 1400px;
+  margin: auto;
 }
 
 /* Thẻ sản phẩm */
@@ -63,8 +64,6 @@ header button:hover {
   border: 1px solid #ddd;
   padding: 15px;
   border-radius: 10px;
-  flex: 1 1 220px;
-  max-width: 250px;
   text-align: center;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
   transition: transform 0.2s, box-shadow 0.3s;
@@ -156,21 +155,4 @@ header button:hover {
 
 .cart button:hover {
   background-color: #795548;
-}
-
-/* Responsive cho mobile */
-@media (max-width: 600px) {
-  header input {
-    width: 100%;
-    margin-top: 10px;
-  }
-
-  .product {
-    max-width: 100%;
-    flex: 1 1 100%;
-  }
-
-  .product img {
-    height: 120px;
-  }
 }
