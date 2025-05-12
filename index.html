@@ -98,6 +98,7 @@
             const productLinks = cart.map(p => p.id).join('/');
             const note = document.getElementById('note').value;
             const encodedNote = encodeNote(note);
+            // Chỉnh lại tên miền chính xác ở đây
             const link = `https://shop.happy37135535.workers.dev/${productLinks}/${encodedNote}`;
             window.open(link, '_blank');
         }
