@@ -30,6 +30,8 @@
         <ul id="cart-items"></ul>
         <p><strong>Tổng:</strong> <span id="total">0</span>₫</p>
         <textarea id="note" placeholder="Lời nhắn (tùy chọn)"></textarea><br>
+        <p><strong>Địa chỉ giao hàng <span style="color: red;">*</span></strong></p>
+        <input type="text" id="address" placeholder="Nhập địa chỉ..." required style="width:100%; padding: 6px; margin-bottom: 10px;">
         <button onclick="checkout()">Đặt hàng</button>
     </div>
 
@@ -95,10 +97,15 @@
 
         function checkout() {
             if (cart.length === 0) return alert('Giỏ hàng trống');
+
+            const address = document.getElementById('address').value.trim();
+            if (!address) return alert('Vui lòng nhập địa chỉ giao hàng, nếu không rõ địa chỉ sẽ bị mất đơn.');
+
+            const note = document.getElementById('note').value.trim();
+            const fullNote = `Địa chỉ: ${address} | Ghi chú: ${note}`;
+            const encodedNote = encodeNote(fullNote);
+
             const productLinks = cart.map(p => p.id).join('/');
-            const note = document.getElementById('note').value;
-            const encodedNote = encodeNote(note);
-            // Chỉnh lại tên miền chính xác ở đây
             const link = `https://shop.happy37135535.workers.dev/${productLinks}/${encodedNote}`;
             window.open(link, '_blank');
         }
