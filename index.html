@@ -30,8 +30,10 @@
         <ul id="cart-items"></ul>
         <p><strong>Tổng:</strong> <span id="total">0</span>₫</p>
         <textarea id="note" placeholder="Lời nhắn (tùy chọn)"></textarea><br>
-        <p><strong>Địa chỉ giao hàng <span style="color: red;">*</span></strong></p>
-        <input type="text" id="address" placeholder="Nhập địa chỉ..." required style="width:100%; padding: 6px; margin-bottom: 10px;">
+        <p><strong>Địa chỉ giao hàng (Ghi rõ)<span style="color: red;">*</span></strong></p>
+        <input type="text" id="address" placeholder="Nhập địa chỉ... (địa chỉ không rõ sẽ mất đơn!)" required style="width:100%; padding: 6px; margin-bottom: 10px;">
+        <p><strong>Số điện thoại<span style="color: red;">*</span></strong></p>
+        <input type="text" id="phone" placeholder="Nhập số điện thoại..." required style="width:100%; padding: 6px; margin-bottom: 10px;">
         <button onclick="checkout()">Đặt hàng</button>
     </div>
 
@@ -95,20 +97,19 @@
             return btoa(unescape(encodeURIComponent(note))).slice(0, 30);
         }
 
-        function encodeNote(note) {
-            return btoa(unescape(encodeURIComponent(note))).slice(0, 30);
-        }
-
         function checkout() {
             if (cart.length === 0) return alert('Giỏ hàng trống');
 
             const address = document.getElementById('address').value.trim();
-            if (!address) return alert('Vui lòng nhập địa chỉ giao hàng.');
-
+            const phone = document.getElementById('phone').value.trim();
             const note = document.getElementById('note').value.trim();
 
-            const encodedAddress = encodeURIComponent(address); // Mã hóa ASCII
-            const encodedNote = encodeNote(note); // Mã hóa base64
+            if (!address) return alert('Vui lòng nhập địa chỉ giao hàng.');
+            if (!phone) return alert('Vui lòng nhập số điện thoại.');
+
+            const fullAddress = `Địa chỉ: ${address} | SĐT: ${phone}`;
+            const encodedAddress = encodeURIComponent(fullAddress);
+            const encodedNote = encodeNote(note);
 
             const productLinks = cart.map(p => p.id).join('/');
             const link = `https://shop.happy37135535.workers.dev/${productLinks}/${encodedAddress}/${encodedNote}`;
