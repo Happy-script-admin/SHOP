@@ -70,13 +70,23 @@
             const list = document.getElementById('cart-items');
             list.innerHTML = '';
             let total = 0;
-            cart.forEach(p => {
+
+            cart.forEach((p, index) => {
                 const li = document.createElement('li');
-                li.textContent = `${p.name} - ${p.price.toLocaleString()}₫`;
+                li.innerHTML = `
+                    ${p.name} - ${p.price.toLocaleString()}₫ 
+                    <button onclick="removeFromCart(${index})" style="margin-left: 10px; color: red;">X</button>
+                `;
                 list.appendChild(li);
                 total += p.price;
             });
+
             document.getElementById('total').textContent = total.toLocaleString();
+        }
+
+        function removeFromCart(index) {
+            cart.splice(index, 1); // Xóa sản phẩm tại vị trí index
+            renderCart(); // Cập nhật lại giỏ hàng
         }
 
         function encodeNote(note) {
