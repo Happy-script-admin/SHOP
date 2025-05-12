@@ -1,4 +1,10 @@
 /* Toàn bộ trang */
+*,
+*::before,
+*::after {
+  box-sizing: border-box; /* Đảm bảo tính toán kích thước chính xác */
+}
+
 body {
   font-family: 'Segoe UI', sans-serif;
   margin: 0;
@@ -30,6 +36,7 @@ header input {
   padding: 10px;
   width: 60%;  /* Điều chỉnh lại cho co giãn tốt hơn */
   max-width: 400px; /* Đặt giới hạn chiều rộng */
+  min-width: 200px; /* Đảm bảo không quá nhỏ */
   border: none;
   border-radius: 5px;
   font-size: 14px;
@@ -66,6 +73,7 @@ header button:hover {
   border-radius: 10px;
   width: 100%;
   max-width: 250px;  /* Đặt giới hạn chiều rộng cho sản phẩm */
+  min-width: 200px;  /* Đảm bảo sản phẩm không bị quá nhỏ */
   text-align: center;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
   transition: transform 0.2s, box-shadow 0.3s;
