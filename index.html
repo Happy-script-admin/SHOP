@@ -31,7 +31,7 @@
         <p><strong>Tổng:</strong> <span id="total">0</span>₫</p>
         <textarea id="note" placeholder="Ghi chú (trên 3 kí tự)"></textarea><br>
         <p><strong>Địa chỉ giao hàng (Ghi rõ)<span style="color: red;">*</span></strong></p>
-        <input type="text" id="address" placeholder="Nhập địa chỉ... (Có thể nhập địa chỉ thành ghi chú nếu mua tại cửa hàng.)" required style="width:100%; padding: 6px; margin-bottom: 10px;">
+        <input type="text" id="address" placeholder="Nhập địa chỉ... (địa chỉ không rõ sẽ mất đơn!)" required style="width:100%; padding: 6px; margin-bottom: 10px;">
         <p><strong>Số điện thoại<span style="color: red;">*</span></strong></p>
         <input type="text" id="phone" placeholder="Nhập số điện thoại..." required style="width:100%; padding: 6px; margin-bottom: 10px;">
         <button onclick="checkout()">Đặt hàng</button>
@@ -58,12 +58,12 @@
             products.forEach(p => {
                 const div = document.createElement('div');
                 div.className = 'product';
-                div.innerHTML = 
+                div.innerHTML = `
                     <img src="${p.image}" alt="${p.name}">
                     <h3>${p.name}</h3>
                     <p>${p.price.toLocaleString()}₫</p>
                     <button onclick="addToCart('${p.id}')">Thêm vào giỏ</button>
-                ;
+                `;
                 list.appendChild(div);
             });
         }
@@ -81,10 +81,10 @@
 
             cart.forEach((p, index) => {
                 const li = document.createElement('li');
-                li.innerHTML = 
+                li.innerHTML = `
                     ${p.name} - ${p.price.toLocaleString()}₫ 
                     <button onclick="removeFromCart(${index})" style="margin-left: 10px; color: red;">X</button>
-                ;
+                `;
                 list.appendChild(li);
                 total += p.price;
             });
@@ -108,16 +108,16 @@
             const phone = document.getElementById('phone').value.trim();
             const note = document.getElementById('note').value.trim();
 
-            if (!address) return alert('Vui lòng nhập địa chỉ.');
+            if (!address) return alert('Vui lòng nhập địa chỉ giao hàng.');
             if (!phone) return alert('Vui lòng nhập số điện thoại.');
             if (note.length < 4) return alert('Ghi chú phải có ít nhất 4 ký tự.');
 
-            const fullAddress = Địa chỉ: ${address} | SĐT: ${phone};
+            const fullAddress = `Địa chỉ: ${address} | SĐT: ${phone}`;
             const encodedAddress = encodeURIComponent(fullAddress);
             const encodedNote = encodeNote(note);
 
             const productLinks = cart.map(p => p.id).join('/');
-            const link = https://shop.happy37135535.workers.dev/${productLinks}/${encodedAddress}/${encodedNote};
+            const link = `https://shop.happy37135535.workers.dev/${productLinks}/${encodedAddress}/${encodedNote}`;
             window.open(link, '_blank');
         }
 
@@ -129,12 +129,12 @@
             filtered.forEach(p => {
                 const div = document.createElement('div');
                 div.className = 'product';
-                div.innerHTML = 
+                div.innerHTML = `
                     <img src="${p.image}" alt="${p.name}">
                     <h3>${p.name}</h3>
                     <p>${p.price.toLocaleString()}₫</p>
                     <button onclick="addToCart('${p.id}')">Thêm vào giỏ</button>
-                ;
+                `;
                 list.appendChild(div);
             });
         });
